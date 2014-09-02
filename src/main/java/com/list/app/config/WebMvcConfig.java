@@ -21,7 +21,7 @@ import org.thymeleaf.templateresolver.TemplateResolver;
 @Configuration
 @ComponentScan("com.list.app")
 @EnableWebMvc
-public class WebAppConfig extends WebMvcConfigurerAdapter {
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	/*
 	 * View Resolver -> Template Engine -> Template Resolver
