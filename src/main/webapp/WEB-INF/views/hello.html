@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
 <title>Welcome to LTD</title>
 </head>
 <body>
 
-	<h1>Welcome !</h1>
+	<h1 th:text="'Welcome ' + ${greeting}">Welcome !</h1>
 
 </body>
 </html>
