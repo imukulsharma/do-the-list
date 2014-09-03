@@ -3,7 +3,6 @@ package com.list.app.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Author : Mukul.Sharma
@@ -18,9 +17,9 @@ public class ListController {
 		return "hello";
 	}
 
-	@RequestMapping(value = "/")
-	@ResponseBody
-	public String greeting(Model model) {
-		return "<h1> Welcome !";
-	}
+	// @RequestMapping(value = "/")
+	// @ResponseBody
+	// public String greeting(Model model) {
+	// return "<h1> Welcome !";
+	// }
 }
