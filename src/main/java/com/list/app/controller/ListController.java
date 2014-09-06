@@ -17,9 +17,4 @@ public class ListController {
 		return "hello";
 	}
 
-	// @RequestMapping(value = "/")
-	// @ResponseBody
-	// public String greeting(Model model) {
-	// return "<h1> Welcome !";
-	// }
 }

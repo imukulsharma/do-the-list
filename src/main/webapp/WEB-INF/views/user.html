@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://www.thymeleaf.org">
+
+<head>
+<title tiles:fragment="title">Messages : Create</title>
+</head>
+
+<body>
+	<form action="#" th:action="@{/user/add}" th:object="${user}"
+		method="post">
+		<fieldset>
+			<div>
+				<label for="firstname">First Name :</label> <input type="text"
+					th:field="*{firstname}" />
+			</div>
+			<div>
+				<label for="lastname">Last Name :</label> <input type="text"
+					th:field="*{lastname}" />
+			</div>
+			<div>
+				<label for="email">Email :</label> <input type="email"
+					th:field="*{email}" />
+			</div>
+			<button type="submit" name="submit" value="save">Add row</button>
+		</fieldset>
+	</form>
+</body>
+
+</html>
