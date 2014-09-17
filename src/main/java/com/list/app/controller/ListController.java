@@ -13,8 +13,8 @@ public class ListController {
 
 	@RequestMapping(value = "/home")
 	public String greet(Model model) {
-		model.addAttribute("greeting", "Listifying begins !");
-		return "hello";
+		model.addAttribute("greeting", " !!");
+		return "home";
 	}
 
 }

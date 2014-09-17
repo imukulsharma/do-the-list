@@ -1,5 +1,7 @@
 package com.list.app.config;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -20,8 +22,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 * responsible for all the security
 	 */
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("mukul").password("123").roles("USER");
+	public void configureGlobal(DataSource dataSource, AuthenticationManagerBuilder auth) throws Exception {
+		auth.jdbcAuthentication().dataSource(dataSource).withDefaultSchema().withUser("mukul").password("123")
+				.roles("USER").and().withUser("ADMIN").password("admin").roles("USER", "ADMIN");
 	}
 
 	@Override
