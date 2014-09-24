@@ -41,6 +41,7 @@ import org.thymeleaf.templateresolver.TemplateResolver;
 @EnableWebMvc
 @PropertySource("classpath:db.properties")
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
+
 	@Autowired
 	Environment env;
 
@@ -88,8 +89,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/login").setViewName("login");
-		// registry.addViewController("/user").setViewName("user");
 		registry.addViewController("/").setViewName("welcome");
+		// registry.addViewController("/user").setViewName("user");
 		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 	}
 

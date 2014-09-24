@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.list.app.dao.UserDAO;
 import com.list.app.model.User;
+import com.list.app.model.Role;
 
 /**
  * Author : Mukul.Sharma
@@ -36,8 +37,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void addUser(User user) {
+		user.setEnabled(true);
+		Role userRole = new Role("ROLE_USER");
+		user.getUserRole().add(userRole);
 		userDao.addUser(user);
+	}
 
+	@Override
+	public User getByUsername(String username) {
+		return userDao.getByUsername(username);
 	}
 
 }

@@ -2,26 +2,23 @@
 	xmlns:tiles="http://www.thymeleaf.org">
 
 <head>
-<title tiles:fragment="title">Messages : Create</title>
+<title tiles:fragment="title">Sign Up</title>
 </head>
 
 <body>
 	<form action="#" th:action="@{/user/add}" th:object="${user}"
 		method="post">
 		<fieldset>
+			<legend>Sign-Up</legend>
 			<div>
-				<label for="firstname">First Name :</label> <input type="text"
-					th:field="*{firstname}" />
+				<label for="username">Email :</label> <input type="email"
+					placeholder="email" th:field="*{username}" />
 			</div>
 			<div>
-				<label for="lastname">Last Name :</label> <input type="text"
-					th:field="*{lastname}" />
+				<label for="password">Password :</label> <input type="password"
+					placeholder="password" th:field="*{password}" />
 			</div>
-			<div>
-				<label for="email">Email :</label> <input type="email"
-					th:field="*{email}" />
-			</div>
-			<button type="submit" name="submit" value="save">Add row</button>
+			<button type="submit" name="submit" value="save">Sign-Up</button>
 		</fieldset>
 	</form>
 </body>
