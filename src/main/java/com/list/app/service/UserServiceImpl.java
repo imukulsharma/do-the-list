@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.list.app.dao.UserDAO;
-import com.list.app.model.User;
 import com.list.app.model.Role;
+import com.list.app.model.User;
 
 /**
  * Author : Mukul.Sharma

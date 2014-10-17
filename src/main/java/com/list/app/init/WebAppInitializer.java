@@ -2,8 +2,10 @@ package com.list.app.init;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import com.list.app.config.RepositoryConfig;
+import com.list.app.config.SecurityConfig;
+import com.list.app.config.ToDoAppConfig;
 import com.list.app.config.WebMvcConfig;
-import com.list.app.config.WebSecurityConfig;
 
 /**
  * Author : Mukul.Sharma
@@ -16,7 +18,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 	 */
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] { WebSecurityConfig.class };
+		return new Class[] { RepositoryConfig.class, SecurityConfig.class, ToDoAppConfig.class };
 	}
 
 	@Override
