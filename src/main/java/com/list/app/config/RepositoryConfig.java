@@ -58,14 +58,6 @@ public class RepositoryConfig {
 		return emf;
 	}
 
-	// @Override
-	// public void addInterceptors(InterceptorRegistry registry) {
-	// OpenEntityManagerInViewInterceptor interceptor = new
-	// OpenEntityManagerInViewInterceptor();
-	// interceptor.setEntityManagerFactory(entityManagerFactory().getObject());
-	// registry.addWebRequestInterceptor(interceptor);
-	// }
-
 	@Bean
 	public PlatformTransactionManager transactionManager() {
 		return new JpaTransactionManager(entityManagerFactory().getObject());

@@ -1,55 +1,55 @@
 package com.list.app.init;
 
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration.Dynamic;
 
-import com.list.app.config.RepositoryConfig;
-import com.list.app.config.SecurityConfig;
-import com.list.app.config.ToDoAppConfig;
-import com.list.app.config.WebMvcConfig;
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.ContextLoaderListener;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
 
 /**
  * Author : Mukul.Sharma
  */
 
-public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class WebAppInitializer implements WebApplicationInitializer {
 
 	/**
 	 * To load SecurityConfig in existing ApplicationInitializer.
 	 */
-	@Override
-	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] { RepositoryConfig.class, SecurityConfig.class, ToDoAppConfig.class };
-	}
+	// @Override
+	// protected Class<?>[] getRootConfigClasses() {
+	// return new Class[] { RepositoryConfig.class, SecurityConfig.class,
+	// ToDoAppConfig.class };
+	// }
+	//
+	// @Override
+	// protected Class<?>[] getServletConfigClasses() {
+	//
+	// return new Class[] { WebMvcConfig.class };
+	// }
+	//
+	// @Override
+	// protected String[] getServletMappings() {
+	// return new String[] { "/" };
+	// }
+
+	// Method 2 :
 
 	@Override
-	protected Class<?>[] getServletConfigClasses() {
+	public void onStartup(ServletContext servletContext) throws ServletException {
 
-		return new Class[] { WebMvcConfig.class };
-	}
+		AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
+		appContext.setConfigLocation("com.list.app.config");
+		servletContext.addListener(new ContextLoaderListener(appContext));
+		// appContext.register(WebAppConfig.class);
 
-	@Override
-	protected String[] getServletMappings() {
-		return new String[] { "/" };
+		appContext.setServletContext(servletContext);
+
+		Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(appContext));
+		servlet.addMapping("/");
+		servlet.setLoadOnStartup(1);
+
 	}
 }
-
-/**
- * Method 2 :
- * 
- * public class WebInitializer implements WebApplicationInitializer {
- * 
- * @Override public void onStartup(ServletContext servletContext) throws
- *           ServletException {
- * 
- *           AnnotationConfigWebApplicationContext appContext = new
- *           AnnotationConfigWebApplicationContext();
- *           appContext.register(WebAppConfig.class);
- * 
- *           appContext.setServletContext(servletContext);
- * 
- *           Dynamic servlet = servletContext.addServlet("dispatcher", new
- *           DispatcherServlet(appContext)); servlet.addMapping("/");
- *           servlet.setLoadOnStartup(1);
- * 
- *           } }
- **/

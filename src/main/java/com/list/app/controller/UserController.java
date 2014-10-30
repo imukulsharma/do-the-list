@@ -28,7 +28,7 @@ public class UserController {
 		return userService.getAll();
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String seeUser(Model model) {
 		model.addAttribute("user", new User());
 		return "user";
